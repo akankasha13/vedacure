@@ -1,28 +1,74 @@
 import { Button, ConfigProvider } from "antd";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+  const [activePath, setActivePath] = useState(location.pathname);
+
+  let toLink = "/login",
+    btnText = "Login";
+  if (activePath == "/login") {
+    toLink = "/signup";
+    btnText = "Signup";
+  } else if (activePath == "/signup") {
+    toLink = "/login";
+    btnText = "Login";
+  }
+
+  useEffect(() => {
+    setActivePath(location.pathname);
+  }, [location.pathname]);
+
+  const handleLogout = () => {
+    if (activePath != "/signup" || activePath != "/login") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("Authorization");
+    }
+  };
+
   return (
-    <div className="header fixed top-0 left-0 backdrop-blur-lg">
-      <p className="font-mono text-3xl text-white">VedaCure</p>
-      {/* <Link to={"/"}> */}
-      <ConfigProvider
-        theme={{
-          components: {
-            Button: {
-              fontWeight: "700",
-            },
-          },
-          token: {
-            // colorPrimary: "#000000",
-            // lineWidth: 2,
-          },
-        }}
+    <header className="fixed top-0 left-0 z-50 w-full p-6 font-mono font-medium text-white backdrop-blur-lg">
+      <div
+        className={
+          "container mx-auto flex items-center justify-between select-none"
+        }
       >
-        <Button size="large">Login</Button>
-      </ConfigProvider>
-      {/* </Link> */}
-    </div>
+        <Link to="/">
+          <h1 className="text-3xl transition-all duration-300 hover:scale-110">
+            VedaCure
+          </h1>
+        </Link>
+        <div className="flex items-center gap-5">
+          <p className="text-2xl transition-all duration-500 ease-out hover:rotate-[360deg]">
+            {localStorage.getItem("user") &&
+              JSON.parse(localStorage.getItem("user")).username}
+          </p>
+          <Link to={toLink}>
+            <ConfigProvider
+              theme={{
+                components: {
+                  Button: {
+                    fontWeight: "700",
+                  },
+                },
+                token: {
+                  colorPrimary: "#000000",
+                  lineWidth: 2,
+                },
+              }}
+            >
+              <Button size="large" ghost onClick={handleLogout}>
+                {btnText}
+              </Button>
+            </ConfigProvider>
+          </Link>
+        </div>
+      </div>
+      {activePath != "/" &&
+        activePath != "/login" &&
+        activePath != "/signup" && <Navigation activePath={activePath} />}
+    </header>
   );
 }
 
@@ -120,4 +166,17 @@ function Footer() {
   );
 }
 
-export { Header, Hero, Boxes, Quote, CTA, Footer };
+function LandingPage() {
+  return (
+    <div className="flex flex-col">
+      <Header />
+      <Hero />
+      <Boxes />
+      <Quote />
+      <CTA />
+      <Footer />
+    </div>
+  );
+}
+
+export { Header, Hero, Boxes, Quote, CTA, Footer, LandingPage };

@@ -1,24 +1,19 @@
-import {
-  Header,
-  Hero,
-  Boxes,
-  Quote,
-  CTA,
-  Footer,
-} from "./components/Landing Page";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Header, LandingPage } from "./components/Landing Page";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
-    <div className="flex flex-col">
+    <Router>
       <Header />
-      <Hero />
-      <Boxes />
-      <Quote />
-      <CTA />
-      <Footer />
-    </div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
