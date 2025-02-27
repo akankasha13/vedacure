@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+body {
+  font-family: "Roboto", serif;
+}
+.btn {
+  background-color: #3882f6;
+  border-color: #3882f6;
+  border-radius: 10px;
+  padding: 10px 30px;
+  align-self: flex-start;
+  color: #f9faf8;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #e5e7eb;
+  padding: 20px 150px;
+}
+
+.main {
+  /* background-color: #1f2937; */
+  height: 500px;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+  gap: 200px;
+  display: flex;
+  justify-content: center;
+}
+.boxA {
+  font-style: ro;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+  color: #e5e7eb;
+}
+#heading {
+  font-size: 40px;
+  color: #f9faf8;
+}
+
+.footer {
+  font-size: 18px;
+  color: #e5e7eb;
+  background-color: #1f2937;
+  padding: 16px;
+  text-align: center;
+}
+
+.image {
+  border: 2px solid #3882f6;
+  height: 100px;
+  width: 100px;
+  border-radius: 8px;
+}
+.BB {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.boxes {
+  display: flex;
+  gap: 30px;
+}
+.boxB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 50px 16px;
+}
+.about-us {
+  background-color: #e5e7eb;
+  color: black;
+  padding: 50px;
+}
+.white {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+.blue {
+  color: #f9faf8;
+  background-color: #3882f6;
+  padding: 30px 100px;
+  border: #3882f6;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+}
+#button {
+  color: #f9faf8;
+  border-color: #f9faf8;
+  border: 2px solid white;
+  width: 150px;
+}
+#hero-text {
+  font-size: 12px;
+}
+.primary-heading {
+  font-weight: bold;
+  font-size: 16px;
+}

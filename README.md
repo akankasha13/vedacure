@@ -1,1 +1,1 @@
-# Vedacure
+# VedaCure
