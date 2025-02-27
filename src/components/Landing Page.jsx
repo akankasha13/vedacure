@@ -83,22 +83,38 @@ function Boxes() {
         We Provide
       </h2>
       <div className="boxes">
-        <div className="BB">
-          <img src="./risk.png" alt="Natropathy" className="image p-3" />
-          <p className="font-mono text-xl font-light">Risk Analysis</p>
-        </div>
-        <div className="BB">
-          <img src="./tracking.png" alt="Natropathy" className="image p-3" />
-          <p className="font-mono text-xl font-light">Health Tracking</p>
-        </div>
-        <div className="BB">
-          <img src="./natropathy.jpg" alt="Natropathy" className="image" />
-          <p className="font-mono text-xl font-light">Natropathy</p>
-        </div>
-        <div className="BB">
-          <img src="./record.jpg" alt="Natropathy" className="image p-3" />
-          <p className="font-mono text-xl font-light">Medical Records</p>
-        </div>
+        <Link to={"/risk"}>
+          <div className="BB">
+            <img src="./risk.png" alt="Risk Analysis" className="image p-3" />
+            <p className="font-mono text-xl font-light">Risk Analysis</p>
+          </div>
+        </Link>
+        <Link to={"/tracking"}>
+          <div className="BB">
+            <img
+              src="./tracking.png"
+              alt="HealthTracking"
+              className="image p-3"
+            />
+            <p className="font-mono text-xl font-light">Health Tracking</p>
+          </div>
+        </Link>
+        <Link to={"/natropathy"}>
+          <div className="BB">
+            <img src="./natropathy.jpg" alt="Natropathy" className="image" />
+            <p className="font-mono text-xl font-light">Natropathy</p>
+          </div>
+        </Link>
+        <Link to={"/records"}>
+          <div className="BB">
+            <img
+              src="./record.jpg"
+              alt="Medical Records"
+              className="image p-3"
+            />
+            <p className="font-mono text-xl font-light">Medical Records</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
@@ -140,19 +156,19 @@ function CTA() {
             lifestyle.
           </p>
         </div>
-        {/* <Link to={"/"}> */}
-        <ConfigProvider
-          theme={{
-            components: {
-              Button: {
-                fontWeight: "600",
+        <Link to={"/signup"}>
+          <ConfigProvider
+            theme={{
+              components: {
+                Button: {
+                  fontWeight: "600",
+                },
               },
-            },
-          }}
-        >
-          <Button size="large">Sign Up</Button>
-        </ConfigProvider>
-        {/* </Link> */}
+            }}
+          >
+            <Button size="large">Sign Up</Button>
+          </ConfigProvider>
+        </Link>
       </div>
     </div>
   );
