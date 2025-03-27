@@ -16,9 +16,11 @@ export default function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+  const inpRef = useRef(null);
 
   useEffect(() => {
-    // if (localStorage.getItem("Authorization")) navigate("/");
+    if (localStorage.getItem("Authorization")) navigate("/");
+    inpRef.current.focus();
   }, []);
 
   const handleSignup = async () => {
@@ -83,7 +85,7 @@ export default function SignUp() {
   };
 
   return (
-    <section className="flex h-dvh items-center justify-center bg-[#1f2937]">
+    <section className="bg-primary flex h-dvh items-center justify-center">
       <div className="flex w-2/3 flex-col gap-5 rounded-2xl border-2 border-white p-5 shadow-lg shadow-[#ffffff99] sm:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6">
         <h1 className="text-center font-mono text-3xl font-bold text-white select-none">
           Signup
@@ -107,6 +109,7 @@ export default function SignUp() {
           <Input
             placeholder="Username"
             className=""
+            ref={inpRef}
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />

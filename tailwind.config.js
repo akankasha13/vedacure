@@ -9,9 +9,7 @@ export default {
     },
     extend: {
       colors: {
-        // accent: "#FFC854",
-        primary: "#6121fd",
-        secondary: "#c721ff",
+        primary: "#1f2937",
       },
     },
   },

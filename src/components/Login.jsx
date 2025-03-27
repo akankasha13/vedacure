@@ -1,5 +1,5 @@
 import { Button, ConfigProvider, Input } from "antd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Errors from "./Errors Box";
@@ -9,9 +9,11 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+  const inpRef = useRef(null);
 
   useEffect(() => {
-    // if (localStorage.getItem("Authorization")) navigate("/");
+    if (localStorage.getItem("Authorization")) navigate("/");
+    inpRef.current.focus();
   }, []);
 
   const handleLogin = async () => {
@@ -57,7 +59,7 @@ export default function Login() {
   };
 
   return (
-    <section className="flex h-dvh items-center justify-center bg-[#1f2937]">
+    <section className="bg-primary flex h-dvh items-center justify-center">
       <div className="flex w-2/3 flex-col gap-5 rounded-2xl border-2 border-white p-5 shadow-lg shadow-[#ffffff99] sm:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-1/6">
         <h1 className="text-center font-mono text-3xl font-bold text-white select-none">
           Login
@@ -81,6 +83,7 @@ export default function Login() {
           <Input
             placeholder="Username"
             className=""
+            ref={inpRef}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />

@@ -1,76 +1,6 @@
 import { Button, ConfigProvider } from "antd";
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-
-function Header() {
-  const location = useLocation();
-  const [activePath, setActivePath] = useState(location.pathname);
-
-  let toLink = "/login",
-    btnText = "Login";
-  if (activePath == "/login") {
-    toLink = "/signup";
-    btnText = "Signup";
-  } else if (activePath == "/signup") {
-    toLink = "/login";
-    btnText = "Login";
-  }
-
-  useEffect(() => {
-    setActivePath(location.pathname);
-  }, [location.pathname]);
-
-  const handleLogout = () => {
-    if (activePath != "/signup" || activePath != "/login") {
-      localStorage.removeItem("user");
-      localStorage.removeItem("Authorization");
-    }
-  };
-
-  return (
-    <header className="fixed top-0 left-0 z-50 w-full p-6 font-mono font-medium text-white backdrop-blur-lg">
-      <div
-        className={
-          "container mx-auto flex items-center justify-between select-none"
-        }
-      >
-        <Link to="/">
-          <h1 className="text-3xl transition-all duration-300 hover:scale-110">
-            VedaCure
-          </h1>
-        </Link>
-        <div className="flex items-center gap-5">
-          <p className="text-2xl transition-all duration-500 ease-out hover:rotate-[360deg]">
-            {localStorage.getItem("user") &&
-              JSON.parse(localStorage.getItem("user")).username}
-          </p>
-          <Link to={toLink}>
-            <ConfigProvider
-              theme={{
-                components: {
-                  Button: {
-                    fontWeight: "700",
-                  },
-                },
-                token: {
-                  colorPrimary: "#000000",
-                  lineWidth: 2,
-                },
-              }}
-            >
-              <Button size="large" ghost onClick={handleLogout}>
-                {btnText}
-              </Button>
-            </ConfigProvider>
-          </Link>
-        </div>
-      </div>
-      {activePath != "/" &&
-        activePath != "/login" &&
-        activePath != "/signup" && <Navigation activePath={activePath} />}
-    </header>
-  );
-}
+import { Link } from "react-router-dom";
+import Header from "./Header";
 
 function Hero() {
   return <div className="main"></div>;
@@ -99,7 +29,7 @@ function Boxes() {
             <p className="font-mono text-xl font-light">Health Tracking</p>
           </div>
         </Link>
-        <Link to={"/natropathy"}>
+        <Link to={"/naturopathy"}>
           <div className="BB">
             <img src="./natropathy.jpg" alt="Natropathy" className="image" />
             <p className="font-mono text-xl font-light">Natropathy</p>
@@ -182,7 +112,7 @@ function Footer() {
   );
 }
 
-function LandingPage() {
+export default function LandingPage() {
   return (
     <div className="flex flex-col">
       <Header />
@@ -195,4 +125,4 @@ function LandingPage() {
   );
 }
 
-export { Header, Hero, Boxes, Quote, CTA, Footer, LandingPage };
+export { Hero, Boxes, Quote, CTA, Footer };
