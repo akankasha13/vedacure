@@ -12,7 +12,7 @@ function Boxes() {
       <h2 className="font-mono text-4xl font-medium text-black uppercase">
         We Provide
       </h2>
-      <div className="boxes">
+      <div className="boxes flex-wrap">
         <Link to={"/risk"}>
           <div className="BB">
             <img src="./risk.png" alt="Risk Analysis" className="image p-3" />
@@ -52,7 +52,7 @@ function Boxes() {
 
 function Quote() {
   return (
-    <div className="about-us flex flex-col items-center gap-5">
+    <div className="about-us flex hidden flex-col items-center gap-5 sm:flex">
       <h2 className="text-bold font-mono text-4xl font-medium uppercase">
         About Us
       </h2>
