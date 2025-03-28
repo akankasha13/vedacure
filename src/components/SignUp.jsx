@@ -39,7 +39,7 @@ export default function SignUp() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/signup",
+        "https://vedacure-backend.onrender.com/api/signup",
         {
           username: username,
           fullName: fullName,

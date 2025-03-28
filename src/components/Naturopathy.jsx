@@ -29,7 +29,7 @@ function BasicForm() {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:3000/api/gen/generate",
+        "https://vedacure-backend.onrender.com/api/gen/generate",
         {
           prompt: createdPrompt,
         },
@@ -61,7 +61,7 @@ function BasicForm() {
     async function getData() {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/user/details",
+          "https://vedacure-backend.onrender.com/api/user/details",
           {
             headers: {
               "Content-Type": "application/json",

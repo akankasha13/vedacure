@@ -23,7 +23,7 @@ export default function Login() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        "https://vedacure-backend.onrender.com/api/login",
         {
           username: username,
           password: password,
